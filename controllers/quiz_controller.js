@@ -19,7 +19,7 @@ exports.index = function(req,res) {
     function(quizes) {
       res.render('quizes/index', { quizes: quizes});
     }
-    ).catch(function(error) { next(error);})
+    ).catch(function(error) { next(error);});
 };
 
 // GET /quizes/:id
@@ -27,7 +27,7 @@ exports.show = function(req, res) {
   res.render('quizes/show', {quiz: req.quiz});
 };
 
-//GET /quizes//:id/answer
+//GET /quizes/:id/answer
 exports.answer = function(req, res) {
   var resultado = 'Incorrecto';
   if (req.query.respuesta === req.quiz.respuesta){
