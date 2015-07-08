@@ -1,3 +1,7 @@
-<p><%= respuesta %></p>
-<br/>
-<a href="/quizes/question">Otra pregunta</a>
+<p>
+  <%= respuesta %>
+  <br/>
+  <a href="/quizes/<%= quiz.id %>">Intentar de nuevo</a>
+  <br/> 
+  <a href="/quizes">Otra pregunta</a>
+</p>
