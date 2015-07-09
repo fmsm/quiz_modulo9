@@ -1,0 +1,9 @@
+<p>Resultados de la busqueda:</p>
+<br/>
+<table>
+  <% var i; for (i=0; i < resultados.length; i++) { %>
+    <tr>
+      <td><a href="quizes/<%= resultados[i].id %>"> <%= resultados[i].pregunta %></a></td>
+    </tr>
+  <% } %>
+</table>

@@ -1,7 +1,17 @@
+<p>Lista de Preguntas:</p>
+<br/>
 <table>
   <% var i; for (i=0; i < quizes.length; i++) { %>
     <tr>
       <td><a href="quizes/<%= quizes[i].id %>"> <%= quizes[i].pregunta %></a></td>
     </tr>
   <% } %>
-</table> 
+</table>
+<br/><br/>
+<p>Busqueda de preguntas:</p>
+<br/>
+<form method="get" action="/quizes">
+  <input type="text" name="search" value="texto a buscar" 
+   onfocusin="if(this.value=='texto a buscar')this.value='';this.style.color='black';"/>
+  <input type="submit" value="Enviar"/>
+</form>

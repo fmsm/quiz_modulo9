@@ -15,11 +15,32 @@ exports.load = function(req,res,next,quizId) {
 
 // GET /quizes
 exports.index = function(req,res) {
-  models.Quiz.findAll().then(
-    function(quizes) {
-      res.render('quizes/index', { quizes: quizes});
-    }
+  //pregunto si hay un query llamado search en el request
+  if (req.query.search !== undefined) {
+    //preparar el string que vamos a buscar
+    var cadenaAbuscar = '%' + req.query.search + '%';  //poner un % al principio y al final
+    cadenaAbuscar = cadenaAbuscar.replace(' ','%');    //substituir espacios en blanco por %
+    //buscar en la DB las preguntas contengan req.query.search
+    models.Quiz.findAll({where: ["pregunta like ?", cadenaAbuscar]}).then(
+      function(resultados) {
+        if (resultados.length !== 0) {
+          //mostrar la vista busqueda.ejs, mostrando la lista de resultados
+          res.render('quizes/busqueda', {resultados: resultados});
+        } else {
+          //mostrar la vista busqueda_vacia.ejs, mostrando una cadena de texto, informando de que no hay resultados
+          res.render('quizes/busqueda_vacia', {resultados: 'No se encontro ninguna pregunta.'});  
+        }//if..else
+      }//function
     ).catch(function(error) { next(error);});
+    //res.render('quizes/busqueda');
+  } else {
+    //si no lo hay, se muestra la vista index.ejs
+    models.Quiz.findAll().then(
+      function(quizes) {
+        res.render('quizes/index', { quizes: quizes});
+      }//function
+    ).catch(function(error) { next(error);});
+  }//if..else
 };
 
 // GET /quizes/:id
