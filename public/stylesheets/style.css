@@ -12,6 +12,8 @@ nav span		{margin: 0px 10px 0px 0px;}
 
 input[type=text]	{color:#979797;}
 
+#ErrorMsgs 		{color:red; font-size: smaller;}
+
 /*centrar la tabla que contiene la lista de preguntas*/
 table	{ margin: auto;
           width: 90%; 
