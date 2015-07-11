@@ -1,0 +1,20 @@
+<span><br/></span>
+<table>
+  <tr>
+    <th><label for="preg" class="rem">Pregunta:</label></th>
+    <td>
+      <input type="text" id="preg" name="quiz[pregunta]" value="<%= quiz.pregunta %>"
+             onfocusin="if(this.value=='Pregunta')this.value='';this.style.color='black';"/>
+    </td>
+  </tr>
+  <tr> 
+    <th><label for="resp" class="rem">Respuesta:</label></th>
+    <td>
+      <input type="text" id="resp" name="quiz[respuesta]" value="<%= quiz.respuesta %>"
+             onfocusin="if(this.value=='Respuesta')this.value='';this.style.color='black';"/>
+    </td>
+  </tr>
+</table>
+<span><br/></span>
+<a href="/quizes"><button type="button">Cancelar</button></a>
+<input type="submit" value="Salvar"/>
