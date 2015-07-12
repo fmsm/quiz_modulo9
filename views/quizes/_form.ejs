@@ -14,6 +14,20 @@
              onfocusin="if(this.value=='Respuesta')this.value='';this.style.color='black';"/>
     </td>
   </tr>
+  <tr>
+    <th><label for="cate" class="rem">Categoria:</label></th>
+    <td>
+	<select id="cate" name="quiz[categoria]">
+          <option selected><%= quiz.categoria %></option>
+	  <option value="Ciencia">Ciencia</option>
+	  <option value="Geografia">Geografia</option>
+	  <option value="Humanidades">Humanidades</option>
+	  <option value="Ocio">Ocio</option>
+	  <option value="Tecnologia">Tecnología</option>
+	  <option value="Otro">Otro</option>
+	</select>
+    </td
+  </tr>
 </table>
 <span><br/></span>
 <a href="/quizes"><button type="button">Cancelar</button></a>

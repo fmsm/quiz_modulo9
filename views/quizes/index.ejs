@@ -2,7 +2,10 @@
 <table>
   <% var i; for (i=0; i < quizes.length; i++) { %>
     <tr>
-      <td><a href="quizes/<%= quizes[i].id %>"> <%= quizes[i].pregunta %></a></td>
+      <td>
+         <a href="quizes/<%= quizes[i].id %>"> <%= quizes[i].pregunta %></a>
+      </td>
+      <td><h4><span><%= quizes[i].categoria %></span></h4></td>
       <td class="izquierda"><a href="quizes/<%= quizes[i].id %>/edit"><button>editar</button></a></td>
       <td class="izquierda">
         <form method="post" action="quizes/<%= quizes[i].id %>?_method=delete">

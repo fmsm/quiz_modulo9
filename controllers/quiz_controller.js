@@ -59,7 +59,7 @@ exports.answer = function(req, res) {
 //GET /quizes/new
 exports.new = function(req,res) {
   var quiz = models.Quiz.build(  //crea objeto quiz
-    {pregunta: 'Pregunta', respuesta: 'Respuesta'}
+    {pregunta: 'Pregunta', respuesta: 'Respuesta', categoria: ''}
   );
   res.render('quizes/new', {quiz: quiz, errors: []});
 };
@@ -73,7 +73,7 @@ exports.create = function(req,res) {
          res.render('quizes/new', {quiz: quiz, errors: err.errors});
        } else {       
         quiz
-        .save({fields: ['pregunta','respuesta']})  //guarda en la base de datos los campos pregunta y respuesta de quiz
+        .save({fields: ['pregunta','respuesta','categoria']})  //guarda en la base de datos los campos pregunta,respuesta y categoria de quiz
         .then(function(){ res.redirect('/quizes')}) //redireccion http a lista de preguntas
        }
      } 
@@ -90,7 +90,8 @@ exports.edit = function(req,res) {
 //PUT /quizes/:id
 exports.update = function(req,res) {
   req.quiz.pregunta = req.body.quiz.pregunta;
-  req.quiz.respuesta = req.body.quiz.respuesta;  
+  req.quiz.respuesta = req.body.quiz.respuesta;
+  req.quiz.categoria = req.body.quiz.categoria;  
 
   req.quiz.validate().then(
      function(err) {
@@ -98,7 +99,7 @@ exports.update = function(req,res) {
          res.render('quizes/edit', {quiz: req.quiz, errors: err.errors});
        } else {       
         req.quiz
-        .save({fields: ['pregunta','respuesta']})  //guarda en la base de datos los campos pregunta y respuesta de quiz
+        .save({fields: ['pregunta','respuesta','categoria']})  //guarda en la base de datos los campos pregunta y respuesta de quiz
         .then(function(){ res.redirect('/quizes')}) //redireccion http a lista de preguntas
        }
      } 
