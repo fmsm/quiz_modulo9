@@ -5,3 +5,10 @@
                onfocusin="if(this.value=='Responda aqui')this.value='';this.style.color='black';"/>
 	<input type="submit" value="Enviar"/>
 </form>
+
+<p><a href="/quizes/<%= quiz.id %>/comments/new"><button>Nuevo comentario</button></a></p>
+
+<p><strong>Comentarios:</strong></p>
+<% for (i in quiz.Comments) { %>
+  <p>- <%= quiz.Comments[i].texto %></p>
+<% } %>
