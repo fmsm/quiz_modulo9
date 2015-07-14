@@ -9,7 +9,6 @@ var methodOverride = require('method-override');
 var session = require('express-session');
 
 var routes = require('./routes/index');
-// var users = require('./routes/users');
 
 var app = express();
 
@@ -41,8 +40,28 @@ app.use(function(req, res, next) {
   next();
 }); 
 
+//Middleware para auto-logout tras 2 minutos
+app.use(function(req, res, next) {
+  //Se usa una variable req.session.hora, en la que esta almacenanda la hora en la que se hizo la ultima 
+  //transaccion, esta variable se inicializa en session_controller cuando se hace login y se crea la session
+  //- comprobar si han pasado mas de dos minutos
+  //  - >2 minutos --> render la vista index, con un mensaje informando de que la sesion ha expirado
+  //  - <2 minutos --> actualiza hora
+  //- pasar control a sgte middleware
+  if (req.session.user) {    
+    if (Date.now() - req.session.hora > 120000) {
+      delete req.session.hora;
+      //res.redirect('/logout');
+      delete req.session.user;
+      res.render('index', { title: 'Quiz', errors: [{'message': 'Sesion expirada.'}] });
+    } else {
+      req.session.hora = Date.now();      
+    }//if..else    
+  }//if (req.session.user)   
+  next();  
+});
+
 app.use('/', routes);
-// app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
