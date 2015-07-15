@@ -18,3 +18,5 @@ input[type=text]	{color:#979797;}
 table {margin:auto;
        width:90%; 
       }
+
+li    { list-style: none;}

@@ -1,0 +1,26 @@
+<p>Estadisticas</p>
+<ul>
+  <li>Número de preguntas: <%= quizzes.length%></li>
+  
+  <% var contador = 0; var sinC = 0; var conC = 0;%>
+  <% for (var i=0; i<quizzes.length;i++) { %>
+    <% contador = contador + quizzes[i].Comments.length; %>
+    <% if (quizzes[i].Comments.length == 0) { %>
+      <% sinC = sinC + 1; %>
+    <% } else { %>
+      <% conC = conC + 1; %>
+    <% } %>  
+  <% } %> 
+  <li>Número de comentarios totales: <%= contador %> </li>
+  
+  <% if (contador == 0) { %>
+    <% var media = 0 %>
+  <% } else { %>
+    <% var media = contador / quizzes.length; %>
+    <% media = media.toFixed(3) %>
+  <% } %>
+  <li>Número medio de comentarios por pregunta: <%= media %></li>
+
+  <li>Número de preguntas sin comentarios <%= sinC %></li>
+  <li>Número de preguntas con comentarios <%= conC %> </li>
+</ul>
