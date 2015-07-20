@@ -49,7 +49,7 @@ app.use(function(req, res, next) {
   //  - <2 minutos --> actualiza hora
   //- pasar control a sgte middleware
   if (req.session.user) {    
-    if (Date.now() - req.session.hora > 120000) {
+    if (Date.now() - req.session.hora > 1200000) { //temporal-->volver a cambiar esto a 120000
       delete req.session.hora;
       //res.redirect('/logout');
       delete req.session.user;

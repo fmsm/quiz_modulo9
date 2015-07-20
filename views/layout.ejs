@@ -1,51 +1,119 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="es">
+
+  <head>  
     <meta charset="utf-8">
-    <title> Quiz </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Segun http://getbootstrap.com/getting-started/
+     "The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags"
+    --> 
+    <title>Quiz Bootstrap (Prueba)</title>
+    <!-- Bootstrap -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <!-- estilos css propios/locales -->
     <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
-    <link rel="stylesheet" type="text/css" media="only screen and (min-width: 530px) and (min-device-width: 481px)"
-          href="/stylesheets/wide.css" />
-    <link rel="stylesheet" type="text/css" media="only screen and (max-width: 480px)"
-          href="/stylesheets/smartphone.css" />
+    <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
   </head>
 
   <body>
-    <div id="page-wrap">
 
-      <header class="main" id="h1">
-        <% if (!session.user) { %>
-          <span class="right"><a href="/login">Login</a></span>
-        <% } else { %>
-          <span class="right"> <%= session.user.username %> <a href="/logout">Logout</a></span>
-        <% } %>
+  <div class="container">
 
-        <h2>Quiz<span>: el juego de las preguntas</span></h2>
-      </header>
+    <!-- Header -->
+    <div class="row conBorde relleno">
+      <div class="col-xs-12 header">
+        <div class="row">
 
-      <nav class="main" id="n1" role="navigation">
-        <span><a href="/">Inicio</a></span>
-        <span><a href="/quizes">Preguntas</a></span>
-        <span><a href="/quizes/statistics">Estadisticas</a></span>  
-        <span><a href="/author">Créditos</a></span>
-      </nav>
+          <div class="col-xs-10 text-center">
+            <h1>Quiz<small class="hidden-xs"> el juego de las preguntas</small></h1>
+          </div>
 
-      <section class="main" id="s1">
+          <div class="col-xs-2">
+
+            <% if (!session.user) { %>
+            <span class="right"><a href="/login">Login</a></span>
+            <% } else { %>
+            <span class="right"> <%= session.user.username %> <a href="/logout">Logout</a></span>
+            <% } %>
+          
+          </div>
+        </div>
+      </div>      
+    </div>
+
+    <!-- Nav y section -->
+    <div class="row conBorde relleno">
+      <!-- nav horizontal -->
+      <div class="col-xs-12 visible-xs navi">
+        <ul class="nav nav-pills">
+          <li><a href="/"><strong>Inicio</strong></a></li>
+          <li><a href="/quizes"><strong>Preguntas</strong></a></li>
+          <li><a href="/quizes/statistics"><strong>Estadisticas</strong></a></li>  
+          <li><a href="/author"><strong>Créditos</strong></a></li>        
+        </ul>
+      </div>
+      <!-- section full-size -->
+      <div class="col-xs-12 visible-xs text-center section conBorde">
+
+        <div><%- body %></div>
+
         <% if (errors.length) { %>
-          <span id="ErrorMsgs">Corregir errores:</span><br/>
+          <!--<span id="ErrorMsgs">Corregir errores:</span><br/>-->
           <% for (var i in errors) { %>
-            <span id="ErrorMsgs"> <%= errors[i].message %> </span><br/>
+            <!--<span id="ErrorMsgs"> <%= errors[i].message %> </span><br/>-->
+            <div class="alert alert-danger"><%= errors[i].message %></div>
           <% } %>          
         <% } %>
- 
-        <div><%- body %></div>
-      </section>
+        
+      </div>
+    </div>
 
-      <footer class="main" id="f1">        
-        <a href="http://es.wikipedia.org/wiki/Quiz">¿Que es un Quiz?</a>
-        <a href="https://github.com/fmsm/quiz_modulo7">Proyecto en GitHub</a>
-      </footer>
+    <div class="row relleno">
+      <!-- nav vertical -->
+      <div class="col-xs-2 hidden-xs text-center navi-v">
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="/"><strong>Inicio</strong></a></li>
+          <li><a href="/quizes"><strong>Preguntas</strong></a></li>
+          <li><a href="/quizes/statistics"><strong>Estadisticas</strong></a></li>  
+          <li><a href="/author"><strong>Créditos</strong></a></li>        
+        </ul>
+      </div>      
+      <!-- section -->
+      <div class="col-xs-10 hidden-xs text-center section">
+         
+        <div><%- body %></div>
+        
+        <% if (errors.length) { %>
+          <!--<span id="ErrorMsgs">Corregir errores:</span><br/>-->
+          <% for (var i in errors) { %>
+            <!--<span id="ErrorMsgs"> <%= errors[i].message %> </span><br/>-->
+            <div class="alert alert-danger"><%= errors[i].message %></div>
+          <% } %>          
+        <% } %>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="row conBorde relleno">
+      <div class="col-xs-12 text-center footer">
+        <ul class="list-inline algoDePadding margenAbajoNo">        
+          <li><a href="http://es.wikipedia.org/wiki/Quiz"><span class="h5">¿Que es un Quiz? </span></a></li>
+          <li><a href="https://github.com/"><span class="h5"> Proyecto en GitHub</span></a></li>
+        <ul>
+      </div>
+    </div>
+
+    <!-- <h1 class="conBorde">¡Hola mundo!</h1> -->
+    <!-- Librería jQuery requerida por los plugins de JavaScript -->
+      <script src="http://code.jquery.com/jquery.js"></script>
+   
+      <!-- Todos los plugins JavaScript de Bootstrap (también puedes
+           incluir archivos JavaScript individuales de los únicos
+           plugins que utilices) -->
+      <script src="/js/bootstrap.min.js"></script>
 
     </div>
+
   </body>
 </html>

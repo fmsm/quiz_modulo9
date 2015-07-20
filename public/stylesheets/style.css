@@ -1,22 +1,113 @@
+* {
+	font-family: 'Raleway', sans-serif;
+}
 
-*			{margin: 0; padding: 0;}
-body			{font: 16px Georgia, serif;}
+body 	{background-color: gray;}
 
-#page-wrap		{margin: 2% auto; color: white;}
-#page-wrap > .main	{border: 1px solid #999; padding: 1%; margin-bottom: 1px; color: black;}
+.relleno{background-color: white;}
 
-section > div		{padding: 20px;}
-header, nav, section	{background: #eee; text-align: center;}
-footer			{background: #eee; text-align: center;}
-nav span		{margin: 0px 10px 0px 0px;}
-.right                  {float: right;}
+/*.header, .nav, .section
+		{margin-top: 1px;}*/
 
-input[type=text]	{color:#979797;}
 
-#ErrorMsgs 		{color:red; font-size: smaller;}
+.conBorde {
+	border-top: 1px solid gray;
+	/*border-right: 1px solid gray;*/
+	/*border-left: 1px solid gray;*/
+}
 
-table {margin:auto;
-       width:90%; 
-      }
+.footer {
+	border-bottom: 1px solid gray;
+}
 
-li    { list-style: none;}
+/*.header, .footer {
+	border: 1px solid gray;
+}*/
+
+/*.navi {
+	border: 1px solid gray
+}
+
+.navi-v {
+	border: 0px;
+}*/
+
+
+/*.section, .navi-v
+        {min-height: 300px;}*/
+
+h1 {
+  margin-top: 10px;
+}
+
+li {
+  list-style: none;
+}
+
+
+/*Formulario de login*/
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.form-signin-heading {
+  margin-top: 10px;
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/*fin Formulario de login*/
+
+.alert {
+	margin-top: 0px;
+	margin-bottom: 10px;
+	max-width: 300px;
+	margin: auto;
+}
+
+.margenAbajo {
+	margin-bottom: 15px;
+}
+
+.margenArriba {
+	margin-top: 20px;
+}
+
+.margenAbajoNo {
+	margin-bottom: 0px;
+}
+
+.algoDePadding {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}

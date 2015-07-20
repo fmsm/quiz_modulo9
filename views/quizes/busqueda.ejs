@@ -1,9 +1,28 @@
-<p>Resultados de la busqueda:</p>
-<br/>
-<table>
+
+<h3>Resultados de la busqueda:</h3>
+<table class="table table-condensed">
   <% var i; for (i=0; i < resultados.length; i++) { %>
     <tr>
-      <td><a href="quizes/<%= resultados[i].id %>"> <%= resultados[i].pregunta %></a></td>
+      <td>
+        <a href="quizes/<%= resultados[i].id %>"> <%= resultados[i].pregunta %></a>
+      </td>
+      <% if (session.user) { %>
+        <td>
+          <%= resultados[i].categoria %>
+        </td>
+        <td>
+          <a href="quizes/<%= resultados[i].id %>/edit">            
+            <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-edit"></span><span class="hidden-xs"> Editar</span></button>
+          </a>
+        </td>
+        <td>
+          <form method="post" action="quizes/<%= resultados[i].id %>?_method=delete">            
+            <button type="submit" class="btn btn-danger" onclick="return confirm('Borrar: <%= resultados[i].pregunta %>');">
+              <span class="glyphicon glyphicon-remove"></span><span class="hidden-xs"> Borrar</span>
+            </button>
+          </form>
+        </td>
+      <% } %>
     </tr>
   <% } %>
 </table>

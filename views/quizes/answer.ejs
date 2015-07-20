@@ -1,7 +1,31 @@
-<p>
-  <%= respuesta %>
-  <br/><br/>
-  <a href="/quizes/<%= quiz.id %>">Intentar de nuevo</a>
-  <br/> 
-  <a href="/quizes">Otra pregunta</a>
-</p>
+
+<h3>La respuesta es ... </h3>
+
+<div 
+	<% if (respuesta == 'Correcta') { %>
+	class="alert alert-success margenAbajo"
+	<% } else { %>
+	class="alert alert-danger margenAbajo"
+	<% } %>
+	role="alert">
+	<span class="h3"><%= respuesta %></span>
+</div>
+
+<% if (respuesta == 'Incorrecta') { %>
+
+	<div class="row hidden-xs">
+  		<div class="col-sm-6 col-sm-offset-3">
+			<a href="/quizes/<%= quiz.id %>" class="btn btn-primary form-control margenAbajo" role="button"><span>Intentar de nuevo</span></a>      
+		</div>
+	</div>
+
+	<a href="/quizes/<%= quiz.id %>" class="visible-xs-block btn btn-primary form-control margenAbajo" role="button"><span>Intentar de nuevo</span></a>
+<% } %>
+
+	<div class="row hidden-xs">
+		<div class="col-sm-6 col-sm-offset-3">
+			<a href="/quizes" class="btn btn-primary form-control margenAbajo" role="button"><span>Otra pregunta</span></a>	
+		</div>
+	</div>
+
+<a href="/quizes" class="visible-xs-block btn btn-primary form-control margenAbajo" role="button"><span>Otra pregunta</span></a>

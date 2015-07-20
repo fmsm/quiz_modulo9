@@ -1,21 +1,65 @@
-<form method="get" action="/quizes/<%= quiz.id %>/answer">
-	<p>Pregunta: <br/>¿<%= quiz.pregunta %>?</p
-	<br/><br/>
-	<input type="text" name="respuesta" value="Responda aqui"
-               onfocusin="if(this.value=='Responda aqui')this.value='';this.style.color='black';"/>
-	<input type="submit" value="Enviar"/>
+<h3>Pregunta</h3>
+
+<!-- para todos los tamaños excepto xs -->
+<form class="hidden-xs" method="get" action="/quizes/<%= quiz.id %>/answer">
+  <div class="form-group">
+    <label for="respuesta"><div class="well well-sm">¿<%= quiz.pregunta %>?</div></label>
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <input id="respuesta" class="form-control" name="respuesta" placeholder="Introduzca aqui su respuesta">    
+      </div>
+    </div>    
+  </div>
+	<div class="form-group">
+    <button type="submit" class="btn btn-primary"><span>Responder</span></button>
+    <a href="/quizes" class="btn btn-warning" role="button"><span>Cancelar</span></a>
+  </div>	
 </form>
 
-<p><a href="/quizes/<%= quiz.id %>/comments/new"><button>Nuevo comentario</button></a></p>
+<!-- solo para tamaños xs -->
+<form class="visible-xs-block" method="get" action="/quizes/<%= quiz.id %>/answer">
+  <div class="form-group">
+    <label for="respuesta"><div class="well well-sm">¿<%= quiz.pregunta %>?</div></label>
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1">
+        <input id="respuesta" class="form-control" name="respuesta" placeholder="Introduzca aqui su respuesta">    
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary"><span>Responder</span></button>
+    <a href="/quizes" class="btn btn-warning" role="button"><span>Cancelar</span></a>
+  </div>  
+</form>
 
-<p><strong>Comentarios:</strong></p>
-<% for (i in quiz.Comments) { %>
-  <% if (quiz.Comments[i].publicado || session.user) { %>
-    <p>- <%= quiz.Comments[i].texto %>
-      <% if (session.user && !quiz.Comments[i].publicado) { %>
-        <a href="/quizes/<%= quiz.id %>/comments/<%= quiz.Comments[i].id %>/publish">
-        <button>Publicar</button></a>
+<hr/>
+
+<!-- Comentarios -->
+<div class="row">
+  <div class="col-xs-12 margenAbajo">
+    <span class="h4">Comentarios</span>
+    <a href="/quizes/<%= quiz.id %>/comments/new" class="btn btn-primary btn-sm" role="button">
+      <span class="glyphicon glyphicon-plus"></span><span> Nuevo</span>
+    </a>    
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3">
+    <ul class="list-group text-left">
+
+      <% for (i in quiz.Comments) { %>
+        <% if (quiz.Comments[i].publicado || session.user) { %>
+          <li class="list-group-item"><%= quiz.Comments[i].texto %>
+            <% if (session.user && !quiz.Comments[i].publicado) { %>
+              <a href="/quizes/<%= quiz.id %>/comments/<%= quiz.Comments[i].id %>/publish" class="btn btn-primary btn-xs" role="button">
+                <span class="glyphicon glyphicon-ok"></span>
+              </a>
+            <% } %>
+          </li>
+        <% } %> 
       <% } %>
-    </p>
-  <% } %> 
-<% } %>
+
+    </ul>
+  </div>
+</div>

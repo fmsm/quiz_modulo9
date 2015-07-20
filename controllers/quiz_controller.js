@@ -52,9 +52,9 @@ exports.show = function(req, res) {
 
 //GET /quizes/:id/answer
 exports.answer = function(req, res) {
-  var resultado = 'Incorrecto';
+  var resultado = 'Incorrecta';
   if (req.query.respuesta === req.quiz.respuesta){
-    resultado = 'Correcto';
+    resultado = 'Correcta';
   }
   res.render('quizes/answer',{quiz: req.quiz, respuesta: resultado, errors: []});
 };
@@ -62,7 +62,7 @@ exports.answer = function(req, res) {
 //GET /quizes/new
 exports.new = function(req,res) {
   var quiz = models.Quiz.build(  //crea objeto quiz
-    {pregunta: 'Pregunta', respuesta: 'Respuesta', categoria: ''}
+    {pregunta: 'Pregunta', respuesta: 'Respuesta', categoria: 'Categoria'}
   );
   res.render('quizes/new', {quiz: quiz, errors: []});
 };

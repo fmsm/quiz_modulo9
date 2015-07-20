@@ -1,29 +1,96 @@
-<p>Lista de Preguntas:</p>
-<table>
+
+<!-- Con sesion iniciada -->
+<% if (session.user) { %> 
+<!-- Busqueda y Añadir-->   
+<!-- Busqueda -->      
+  <div class="row">  
+    <div class="col-xs-8 visible-xs-block"> 
+      <h3>Busqueda <span class="hidden-xs">de preguntas</span>:</h3>
+      <form method="get" action="/quizes">
+        <div class="row">
+          <div class="col-xs-7">
+            <input type="text" class="form-control" name="search" placeholder="texto a buscar"/>      
+          </div>
+          <div class="col-xs-1">
+            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span><span class="hidden-xs"> Buscar</span></button>
+          </div>  
+        </div>         
+      </form>  
+    </div>
+    <!-- visible para todos los tamaños excepto xs -->
+    <div class="col-xs-8 hidden-xs">  
+      <h3>Busqueda <span class="hidden-xs">de preguntas</span>:</h3>
+      <form class="form-inline" method="get" action="/quizes">
+        <input type="text" class="form-control" name="search" placeholder="texto a buscar"/>      
+        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span><span class="hidden-xs"> Buscar</span></button>
+      </form>                  
+    </div> 
+<!-- Añadir -->                  
+    <div class="col-xs-4"> 
+      <h3>Añadir <span class="visible-lg-inline">Pregunta</span>:</h3>
+      <a href="/quizes/new">
+        <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span><span> Añadir</span></button>
+      </a>
+      <br/><br/>
+    </div>  
+  </div> 
+
+<!-- sin sesion iniciada -->
+<% } else {%>
+
+<!-- Solo Busqueda -->
+  <div class="row">  
+    <!-- solo visible para tamaño xs -->
+    <div class="col-xs-12 visible-xs-block"> 
+      <h3>Busqueda <span class="hidden-xs">de preguntas</span>:</h3>
+      <form method="get" action="/quizes">
+        <div class="row">
+          <div class="col-xs-10">
+            <input type="text" class="form-control" name="search" placeholder="texto a buscar"/>      
+          </div>
+          <div class="col-xs-2">
+            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span><span class="hidden-xs"> Buscar</span></button>
+          </div>  
+        </div>    
+      </form>                  
+    </div>  
+    <!-- visible para todos los tamaños excepto xs -->
+    <div class="col-xs-12 hidden-xs">  
+      <h3>Busqueda <span class="hidden-xs">de preguntas</span>:</h3>
+      <form class="form-inline" method="get" action="/quizes">
+        <input type="text" class="form-control" name="search" placeholder="texto a buscar"/>      
+        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span><span class="hidden-xs"> Buscar</span></button>
+      </form>                  
+    </div>  
+  </div>
+  
+<% } %>
+  
+
+<h3>Lista de Preguntas:</h3>
+<table class="table table-condensed">
   <% var i; for (i=0; i < quizes.length; i++) { %>
     <tr>
-      <td><a href="quizes/<%= quizes[i].id %>"> <%= quizes[i].pregunta %></a></td>
+      <td>
+        <a href="quizes/<%= quizes[i].id %>"> <%= quizes[i].pregunta %></a>
+      </td>
       <% if (session.user) { %>
-        <td><h4><span><%= quizes[i].categoria %></span></h4></td>
-        <td class="izquierda"><a href="quizes/<%= quizes[i].id %>/edit"><button>editar</button></a></td>
-        <td class="izquierda">
-          <form method="post" action="quizes/<%= quizes[i].id %>?_method=delete">
-            <button type="submit" onclick="return confirm('Borrar: <%= quizes[i].pregunta %>');">borrar</button>
+        <td>
+          <%= quizes[i].categoria %>
+        </td>
+        <td>
+          <a href="quizes/<%= quizes[i].id %>/edit">            
+            <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-edit"></span><span class="hidden-xs"> Editar</span></button>
+          </a>
+        </td>
+        <td>
+          <form method="post" action="quizes/<%= quizes[i].id %>?_method=delete">            
+            <button type="submit" class="btn btn-danger" onclick="return confirm('Borrar: <%= quizes[i].pregunta %>');">
+              <span class="glyphicon glyphicon-remove"></span><span class="hidden-xs"> Borrar</span>
+            </button>
           </form>
         </td>
       <% } %>
     </tr>
   <% } %>
 </table>
-<br/>
-<% if (session.user) { %>
-  <p>Añadir <span>Nueva Pregunta</span>:</p>
-  <a href="/quizes/new"><button type="button">Añadir</button></a>
-  <br/><br/>
-<% } %>
-<p>Busqueda <span>de preguntas</span>:</p>
-<form method="get" action="/quizes">
-  <input type="text" name="search" value="texto a buscar" 
-   onfocusin="if(this.value=='texto a buscar')this.value='';this.style.color='black';"/>
-  <input type="submit" value="Enviar"/>
-</form>
