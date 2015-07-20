@@ -8,7 +8,7 @@
     <!-- Segun http://getbootstrap.com/getting-started/
      "The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags"
     --> 
-    <title>Quiz Bootstrap (Prueba)</title>
+    <title>Quiz</title>
     <!-- Bootstrap -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <!-- estilos css propios/locales -->
@@ -26,7 +26,7 @@
         <div class="row">
 
           <div class="col-xs-10 text-center">
-            <h1>Quiz<small class="hidden-xs"> el juego de las preguntas</small></h1>
+            <h1><strong>Quiz</strong><small class="hidden-xs"> el juego de las preguntas</small></h1>
           </div>
 
           <div class="col-xs-2">
@@ -62,7 +62,7 @@
           <!--<span id="ErrorMsgs">Corregir errores:</span><br/>-->
           <% for (var i in errors) { %>
             <!--<span id="ErrorMsgs"> <%= errors[i].message %> </span><br/>-->
-            <div class="alert alert-danger"><%= errors[i].message %></div>
+            <div class="alert alert-danger margenAbajo"><%= errors[i].message %></div>
           <% } %>          
         <% } %>
         
@@ -88,7 +88,7 @@
           <!--<span id="ErrorMsgs">Corregir errores:</span><br/>-->
           <% for (var i in errors) { %>
             <!--<span id="ErrorMsgs"> <%= errors[i].message %> </span><br/>-->
-            <div class="alert alert-danger"><%= errors[i].message %></div>
+            <div class="alert alert-danger margenAbajo"><%= errors[i].message %></div>
           <% } %>          
         <% } %>
       </div>
@@ -98,8 +98,8 @@
     <div class="row conBorde relleno">
       <div class="col-xs-12 text-center footer">
         <ul class="list-inline algoDePadding margenAbajoNo">        
-          <li><a href="http://es.wikipedia.org/wiki/Quiz"><span class="h5">¿Que es un Quiz? </span></a></li>
-          <li><a href="https://github.com/"><span class="h5"> Proyecto en GitHub</span></a></li>
+          <li><a href="http://es.wikipedia.org/wiki/Quiz" target="_blank"><span class="h5">¿Que es un Quiz? </span></a></li>
+          <li><a href="https://github.com/fmsm/quiz_modulo9/" target="_blank"><span class="h5"> Proyecto en GitHub</span></a></li>
         <ul>
       </div>
     </div>

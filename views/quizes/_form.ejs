@@ -1,23 +1,27 @@
 
+<% if (accion=='new') { %>
+
+<!-- NEW -->
+
 <!-- visible para todos los tamaños excepto xs -->
 <form class="form-horizontal hidden-xs" method="post" action="/quizes/create">
   <div class="form-group">
     <label for="pregunta" class="col-sm-2 control-label"><span>Pregunta</span></label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="pregunta" name="quiz[pregunta]" placeholder="<%= quiz.pregunta %>"/>
+      <input type="text" class="form-control" id="pregunta" name="quiz[pregunta]" placeholder="Pregunta"/>
     </div>
   </div>
   <div class="form-group">
     <label for="respuesta" class="col-sm-2 control-label"><span>Respuesta</span></label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="respuesta" name="quiz[respuesta]" placeholder="<%= quiz.respuesta %>"/>
+      <input type="text" class="form-control" id="respuesta" name="quiz[respuesta]" placeholder="Respuesta"/>
     </div>
   </div>
   <div class="form-group">    
     <label for="categoria" class="col-sm-2 control-label"><span>Categoria</span></label>
     <div class="col-sm-10">
       <select class="form-control" id="categoria" name="quiz[categoria]">
-        <option value="" selected><%= quiz.categoria %></option>
+        <option value="" selected>Categoria</option>
         <option value="Ciencia">Ciencia</option>
         <option value="Geografia">Geografia</option>
         <option value="Humanidades">Humanidades</option>
@@ -37,16 +41,16 @@
 <form class="visible-xs-block" method="post" action="/quizes/create">
   <div class="form-group">
     <label class="sr-only" for="pregunta"><span>Pregunta</span></label>  
-    <input type="text" class="form-control" id="pregunta" name="quiz[pregunta]" placeholder="<%= quiz.pregunta %>"/>  
+    <input type="text" class="form-control" id="pregunta" name="quiz[pregunta]" placeholder="Pregunta"/>  
   </div>
   <div class="form-group">
     <label class="sr-only" for="respuesta"><span>Respuesta</span></label>
-    <input type="text" class="form-control" id="respuesta" name="quiz[respuesta]" placeholder="<%= quiz.respuesta %>"/>
+    <input type="text" class="form-control" id="respuesta" name="quiz[respuesta]" placeholder="Respuesta"/>
   </div>
   <div class="form-group">    
     <label class="sr-only" for="categoria"><span>Categoria</span></label>
     <select class="form-control" id="categoria" name="quiz[categoria]">
-      <option value="" selected><%= quiz.categoria %></option>
+      <option value="" selected>Categoria</option>
       <option value="Ciencia">Ciencia</option>
       <option value="Geografia">Geografia</option>
       <option value="Humanidades">Humanidades</option>
@@ -60,3 +64,71 @@
       <a href="/quizes" class="btn btn-warning" role="button"><span>Cancelar</span></a>      
   </div>
 </form> 
+
+<% } else { %>
+
+<!-- EDIT -->
+
+<!-- visible para todos los tamaños excepto xs -->
+<form class="form-horizontal hidden-xs" method="post" action="/quizes/<%=quiz.id%>?_method=put">
+  <div class="form-group">
+    <label for="pregunta" class="col-sm-2 control-label altura"><span>Pregunta</span></label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="pregunta" name="quiz[pregunta]" value="<%= quiz.pregunta %>"/>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="respuesta" class="col-sm-2 control-label altura"><span>Respuesta</span></label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="respuesta" name="quiz[respuesta]" value="<%= quiz.respuesta %>"/>
+    </div>
+  </div>
+  <div class="form-group">    
+    <label for="categoria" class="col-sm-2 control-label altura"><span>Categoria</span></label>
+    <div class="col-sm-10">
+      <select class="form-control" id="categoria" name="quiz[categoria]">
+        <option value="<%= quiz.categoria %>" selected><%= quiz.categoria %></option>
+        <option value="Ciencia">Ciencia</option>
+        <option value="Geografia">Geografia</option>
+        <option value="Humanidades">Humanidades</option>
+        <option value="Ocio">Ocio</option>
+        <option value="Tecnologia">Tecnología</option>
+        <option value="Otro">Otro</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+      <button type="submit" class="btn btn-primary"><span>Guardar</span></button>
+      <a href="/quizes" class="btn btn-warning" role="button"><span>Cancelar</span></a>      
+  </div>
+</form>
+
+<!-- visible solo para tamaños xs -->
+<form class="visible-xs-block" method="post" action="/quizes/<%=quiz.id%>?_method=put" >
+  <div class="form-group">
+    <label class="sr-only" for="pregunta"><span>Pregunta</span></label>  
+    <input type="text" class="form-control" id="pregunta" name="quiz[pregunta]" value="<%= quiz.pregunta %>"/>  
+  </div>
+  <div class="form-group">
+    <label class="sr-only" for="respuesta"><span>Respuesta</span></label>
+    <input type="text" class="form-control" id="respuesta" name="quiz[respuesta]" value="<%= quiz.respuesta %>"/>
+  </div>
+  <div class="form-group">    
+    <label class="sr-only" for="categoria"><span>Categoria</span></label>
+    <select class="form-control" id="categoria" name="quiz[categoria]">
+      <option value="<%= quiz.categoria %>" selected><%= quiz.categoria %></option>
+      <option value="Ciencia">Ciencia</option>
+      <option value="Geografia">Geografia</option>
+      <option value="Humanidades">Humanidades</option>
+      <option value="Ocio">Ocio</option>
+      <option value="Tecnologia">Tecnología</option>
+      <option value="Otro">Otro</option>
+    </select>  
+  </div>
+  <div class="form-group">
+      <button type="submit" class="btn btn-primary"><span>Guardar</span></button>
+      <a href="/quizes" class="btn btn-warning" role="button"><span>Cancelar</span></a>      
+  </div>
+</form>  
+
+<% } %>
