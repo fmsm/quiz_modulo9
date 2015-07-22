@@ -56,7 +56,23 @@ sequelize.sync().then(function() {
       Quiz.create({ pregunta: 'Capital de Portugal',
                     respuesta: 'Lisboa',
                     categoria: 'Geografia'
-                 })
+                 }),
+      Quiz.create({ pregunta: 'Presidente de Grecia',
+                    respuesta: 'Alexis Tsipras',
+                    categoria: 'Humanidades'
+                 }),
+      Quiz.create({ pregunta: 'Montaña mas alta de España',
+                    respuesta: 'Teide',
+                    categoria: 'Geografia'
+                 }),
+      Quiz.create({ pregunta: 'Que equipo gano la Champions League en el año 2015',
+                    respuesta: 'FC Barcelona',
+                    categoria: 'Ocio'
+                 }),
+      Quiz.create({ pregunta: 'De que pais es originaria la empresa Samsung',
+                    respuesta: 'Corea del Sur',
+                    categoria: 'Tecnologia'
+                 })                                                         
       .then(function(){console.log('Base de datos inicializada.')});
     };
   });
